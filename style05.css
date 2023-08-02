@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>Embedded Style Sheet</title>
 
-<style>
  #alternates{
   border: red dashed;
   width: 1000px;
@@ -13,4 +12,4 @@
   margin: 10px;
   background-color: #f9e1b5;
   float: right;}
-</style>
+

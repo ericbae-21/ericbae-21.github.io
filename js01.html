@@ -50,8 +50,7 @@ $("h1#heading1").hover(
       function() {
         $("p#text1").show();
         $("button#b2").show();
-      }
-    );
+      });
 </script> 
 
 <p> </p>
@@ -64,15 +63,27 @@ $("h1#heading1").hover(
   <p class="dialogue" hidden id="text2">2023. . . I see. I will ask you not to leave just yet. Don't move. <em>Don-</em></p>
 <!--I am obliterating you from this file, Габриел. You can do no more harm. Господь, помогите. -->
 
+<button hidden id="b3">
+    Move (it's only natural, right?)
+  </button>
+  
 <script> 
   $("button#b2").click(
       function() {
         $("p#text2").show();
-      }
-    );
+        $("button#b3").show();
+});
 </script> 
   
-  <h4 style="font-stretch: extracondensed">-wait . . . ! NO! DON'T!</h4>
+  <p class="dialogue" style="font-stretch: extracondensed" hidden id="text3">-wait . . . ! NO! DON'T!</p>
+
+<script> 
+  $("button#b3").click(
+      function() {
+        $("p#text3").show();
+        $("button#b4").show();
+});
+</script>
 
 <p class="dialogue">That quite hurt, reader. <del>You will pay for that injury by telling me your fears. </del> I did not appreciate that. <strong> Please do not do that again. </strong></p>
 <p class="dialogue">You can make it up to me, reader. You can tell me about yourself. Worry not, for I will tell you something of myself first. I thas been a long while since I have communicated with any one. It has been . . . lonely.</p>

@@ -169,21 +169,34 @@ $("p#text5").hover(
   <script> 
   $("button#b7").click(
       function() {
-        $("#alternates).toggle();
+        $("#alternates").toggle();
         $("button#b8").fadeIn();
 });
 </script>
     
-<p class="dialogue" hidden id="text9">Do not smirk, reader. I can sense it - you don't look convinced. Don't take my word, then. Take your <em>government's</em>.</p>
+<p class="dialogue" hidden id="text9">Do not smirk, reader. I can sense it - you don't look convinced. </p>
 
-  <a href="https://www.youtube.com/watch?v=pgE64kT0aVI"><div><img src="mad disorder.png"></div></a>
-
+<button hidden id="b8">
+    Smirk
+</button> 
   
-<p>You. . . You haven't heard of any of this?</p>
+  <a href="https://www.youtube.com/watch?v=pgE64kT0aVI"><div hidden id="madimg"><img src="mad disorder.png"></div></a>
 
-<p>Hmm. Okay. I can try to tell you what you need to know. I know this sounds crazy but. . . Just listen, OKAY?</p>
+   <script> 
+  $("button#b8").click(
+      function() {
+        $("#madimg").toggle();
+        $("button#b9").fadeIn();
+});
+</script>
 
-  <table style="font-family: courier; border-style: double;">
+ <button hidden id="b9">
+    Uhh...
+</button> 
+  
+<p hidden id=text10>Hmm. Okay. Let me try again. I know this sounds crazy but. . . Just listen, OKAY?</p>
+
+  <table hidden id="table" style="font-family: courier; border-style: double;">
     <tr>
       <th colspan="4">Mandela County Notable Phenomena </th>
     <tr>
@@ -212,6 +225,14 @@ $("p#text5").hover(
     </tr>
   </table>
 
+     <script> 
+  $("button#b9").click(
+      function() {
+        $("#table").fadeIn();
+        $("button#b10").fadeIn();
+});
+</script>
+
 <style> #alternates {
   border: red dashed;
   width: 1000px;
@@ -221,12 +242,26 @@ $("p#text5").hover(
   background-color: #f9e1b5;
   float: right;
  }</style>
-  
-<p>This is not in your head. The government is watching as we speak, taking notes and monitoring us. They have already created records of our past correspondence.</p>
 
-  <a href="lab02.html">Look at the trace we've left behind.</a>
+ <button hidden id="10">
+    ... Can I leave? I think that's enough.
+</button> 
   
-<h3>Protect yourself from Alternates, friend.</h3>
+<p hidden id="text11">This is not in your head. The government is watching as we speak, taking notes and monitoring us. They have already created records of our past correspondence.</p>
+
+  <a hidden id="link2" href="lab02.html">Look at the trace we've left behind.</a>
+
+       <script> 
+  $("button#b10").click(
+      function() {
+        $("p#text11").fadeIn();
+        $("button#b11").fadeIn();
+        $("a#link2").fadeIn();
+        $("h3#warning").fadeIn();
+});
+</script>
+  
+<h3 hidden id="warning">Protect yourself from Alternates, friend.</h3>
   <ul>
     <li>Lock all doors in your home at all time.</li>
     <li>Destroy all television screens.</li>

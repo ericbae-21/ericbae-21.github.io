@@ -21,12 +21,20 @@
 <!--Go. I will help you this time, foolish one. But I cannot ensure that I can save you again.-->
   <p class="dialogue">Oh. . .  Wait, please! Please, don't go! Don't go just yet!</p>
 
-  <button id="Text1">
-    Respond?
+  <button id="button1">
+    Respond
   </button>
   <p class="dialogue" hidden id="Text1">
       You. . . You are not accessing this page from Mandela County. . . Can it be? Are. . . Wh-What is today's date? The year on your computer's time clock?</p>
+<script> 
+  $(button#button1).click(
+      function() {
+        $("p#Text1").toggle();
+      }
+    );
 
+</script> 
+  
   <p class="dialogue">2023. . . I see. I will ask you not to leave just yet. Don't move. <em>Don-</em></p>
 <!--I am obliterating you from this file, Габриел. You can do no more harm. Господь, помогите. -->
   <h4 style="font-stretch: extracondensed">-wait . . . ! NO! DON'T!</h4>

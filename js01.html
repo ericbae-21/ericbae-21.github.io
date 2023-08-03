@@ -12,6 +12,12 @@
 <!--Foolish one, don't keep reading. You will expose your fears to it. -->
   <h1 id="heading1">Er/</h1>
 
+<style>
+  .dialogue{
+    color: #666666;
+  }
+</style>
+  
 <script>
 $("h1#heading1").hover(
       function() {
@@ -128,23 +134,42 @@ $("p#text5").hover(
   $("button#b5").click(
       function() {
         $("p#text7").show();
-        $("button#b8").show();
+        $("button#b6").show();
 });
 </script>
     
-<style>
-  .dialogue{
-    color: #666666;
-  }
-</style>
+ <button hidden id="b6">
+    I... don't follow.
+</button> 
   
-  <p class="dialogue">They look like this.</p>
-<div id="alternates">
+  <p class="dialogue" hidden id=text8>They look like this. Here, I'll give you the option of hiding the image as to not... give you nightmares.</p>
+
+<script> 
+  $("button#b6").click(
+      function() {
+        $("p#text8").show(); $("p#text9").show();
+        $("button#b7").show();
+});
+</script>
+
+   <button hidden id="b7">
+    View/Hide
+</button> 
+  
+<div hidden id="alternates">
   <img src="Alternates Images/alternate 2.png"style="width:98%; height: 400px">
   <img src="Alternates Images/alternate 4.png" style="width: 95%; height: 400px">
 </div>
+
+  <script> 
+  $("button#b7").click(
+      function() {
+        $("div#alternates).toggle();
+        $("button#b7").show();
+});
+</script>
     
-<p class="dialogue">Do not smirk, reader. I can sense it - you don't look convinced. Don't take my word, then. Take your <em>government's</em>.</p>
+<p class="dialogue" hidden id="text9">Do not smirk, reader. I can sense it - you don't look convinced. Don't take my word, then. Take your <em>government's</em>.</p>
 
   <a href="https://www.youtube.com/watch?v=pgE64kT0aVI"><div><img src="mad disorder.png"></div></a>
 

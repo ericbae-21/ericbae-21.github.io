@@ -129,7 +129,7 @@ $("p#text5").hover(
 
     $("p#text6").hover(
       function() {
-        $("button#b5").show();
+        $("button#b5").fadeIn();
       }
     );
   </script>  
@@ -138,8 +138,8 @@ $("p#text5").hover(
 <script> 
   $("button#b5").click(
       function() {
-        $("p#text7").show();
-        $("button#b6").show();
+        $("p#text7").fadeIn();
+        $("button#b6").fadeIn();
 });
 </script>
     
@@ -152,8 +152,8 @@ $("p#text5").hover(
 <script> 
   $("button#b6").click(
       function() {
-        $("p#text8").show(); $("p#text9").show();
-        $("button#b7").show();
+        $("p#text8").fadeIn(); $("p#text9").show();
+        $("button#b7").fadeIn();
 });
 </script>
 
@@ -169,8 +169,8 @@ $("p#text5").hover(
   <script> 
   $("button#b7").click(
       function() {
-        $("div#alternates).toggle();
-        $("button#b7").show();
+        $("#alternates).toggle();
+        $("button#b7").fadeIn();
 });
 </script>
     

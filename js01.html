@@ -85,12 +85,53 @@ $("h1#heading1").hover(
 });
 </script>
 
-<p class="dialogue">That quite hurt, reader. <del>You will pay for that injury by telling me your fears. </del> I did not appreciate that. <strong> Please do not do that again. </strong></p>
-<p class="dialogue">You can make it up to me, reader. You can tell me about yourself. Worry not, for I will tell you something of myself first. I thas been a long while since I have communicated with any one. It has been . . . lonely.</p>
-<p class="dialogue">My name is <strong>Adam Murray.</strong> I am from Mandela County, Wisconsin. My friend Jonah and I tried making names for ourselves as paranormal investigators in the <em>Bythorne Paranormal Society.</em> We did good work. It wasn't an easy living, but it was enough. We were hunting alternates, though, mostly we handled "hauntings" and such from paranoid old folk.</p>
+<button hidden id="b4">
+    What... I don't know what that just did.
+  </button>  
 
-<p class="dialogue">What are alternates, you ask? Alternates are these ... well. They're <strong>inhuman doppelgangers</strong> that have invaded the county and driven people crazy with MAD disease. On top of that, there have been break-ins since the eighties. A man called the <strong>Intruder</strong> has been breaking into houses and <del>kidnapping children.</del> causing paranormal disturbances.</p>
+<script> 
+  $("button#b4").click(
+      function() {
+        $("p#text4").show();
+});
+    $("p#text4").hover(
+      function() {
+        $("p#text5").show();
+      }
+    );
 
+$("p#text5").hover(
+      function() {
+        $("p#text6").show();
+      }
+    );
+
+    $("p#text5").hover(
+      function() {
+        $("button#b5").show();
+      }
+    );
+    
+</script>
+  
+<p class="dialogue" hidden id="text4">That quite hurt, reader. <del>You will pay for that injury by telling me your fears. </del> I did not appreciate that. <strong> Please do not do that again. </strong></p>
+<p class="dialogue" hidden id="text5">You can make it up to me, reader. You can tell me about yourself. Worry not, for I will tell you something of myself first. I thas been a long while since I have communicated with any one. It has been . . . lonely.</p>
+<p class="dialogue" hidden id="text6">My name is <strong>Adam Murray.</strong> I am from Mandela County, Wisconsin. My friend Jonah and I tried making names for ourselves as paranormal investigators in the <em>Bythorne Paranormal Society.</em> We did good work. It wasn't an easy living, but it was enough. We were hunting alternates, though, mostly we handled "hauntings" and such from paranoid old folk.</p>
+
+<button hidden id="b5">
+    What are alternates?
+</button>
+    
+<p class="dialogue" hidden id="text7">What are alternates, you ask? Alternates are these ... well. They're <strong>inhuman doppelgangers</strong> that have invaded the county and driven people crazy with MAD disease. On top of that, there have been break-ins since the eighties. A man called the <strong>Intruder</strong> has been breaking into houses and <del>kidnapping children.</del> causing paranormal disturbances.</p>
+
+<script> 
+  $("button#b5").click(
+      function() {
+        $("p#text7").show();
+        $("button#b8").show();
+});
+</script>
+    
 <style>
   .dialogue{
     color: #666666;

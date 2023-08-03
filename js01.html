@@ -57,10 +57,14 @@ $("h1#heading1").hover(
         $("p#text1").fadeIn();
         $("button#b2").fadeIn();
       });
+ $("p#text1").hover(
+      function() {
+        $("b#2").fadeIn();
+      }
+    );
+  
 </script> 
 
-<p> </p>
-  <p> </p>
   
 <button hidden id="b2">
     Check date
@@ -77,8 +81,14 @@ $("h1#heading1").hover(
   $("button#b2").click(
       function() {
         $("p#text2").fadeIn();
-        $("button#b3").fadeIn();
+       
 });
+ $("p#text2").hover(
+      function() {
+        $("b#3").fadeIn();
+      }
+    );
+  
 </script> 
   
   <p class="dialogue" style="font-stretch: extracondensed" hidden id="text3">-wait . . . ! NO! DON'T!</p>
@@ -87,8 +97,15 @@ $("h1#heading1").hover(
   $("button#b3").click(
       function() {
         $("p#text3").fadeIn();
-        $("button#b4").fadeIn();
+      
 });
+
+  $("p#text3").hover(
+      function() {
+        $("b#4").fadeIn();
+      }
+    );
+  
 </script>
 
 <button hidden id="b4">

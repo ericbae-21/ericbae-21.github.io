@@ -16,13 +16,16 @@
               var id = $(this).attr('id');
               console.log("Clicked on " + id);
 
-            if (guesses.includes(id)) {$("#error_msg").html("Ha! Silly, you already guessed " + id);} else {
+            if (guesses.includes(id)) {
+              $("#error_msg").html("Ha! Silly, you already guessed " + id);
+            } else {
                         guesses = guesses + id;
                         total_guesses = total_guesses - 1;
-                        if (total_guesses ≤ 0) {$("#error_msg").html("Ha! That's it, your time's up. You done dropped the ball on this one. YOU LOSE!")} else 
-                         {$("#numleft").html(total_guesses);}    
-           
-              }
+                        if (total_guesses ≤ 0) {
+                          $("#error_msg").html("Ha! That's it, your time's up. You done dropped the ball on this one. YOU LOSE!")
+                        } else {
+                         $("#numleft").html(total_guesses);
+                        }    
             }                                  
           }
           );

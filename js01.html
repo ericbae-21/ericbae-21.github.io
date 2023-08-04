@@ -179,6 +179,8 @@ $("p#text5").hover(
 <button hidden id="b8">
     Smirk
 </button> 
+
+  <p hidden id="text9a">Fine. I detect in you a lack of tact. Don't take my word, then, take your government's. </p>
   
   <a href="https://www.youtube.com/watch?v=pgE64kT0aVI"><div hidden id="madimg"><img src="mad disorder.png"></div></a>
 
@@ -186,6 +188,7 @@ $("p#text5").hover(
   $("button#b8").click(
       function() {
         $("#madimg").toggle();
+        $("p#text9a").fadeIn();
         $("button#b9").fadeIn();
 });
 </script>

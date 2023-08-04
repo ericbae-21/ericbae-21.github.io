@@ -15,8 +15,11 @@
             var id = $(this).attr('id');
             console.log("Clicked on " + id);
 
-            if (guesses.includes(id) ) {$("error").html("You already guessed that one, silly.);}
-                  else {guesses = guesses + id; }                                      
+            if (guesses.includes(id) ) {$("error_msg").html("You already guessed that one, silly.);}
+                  else {guesses = guesses + id; 
+                        total_guesses = total_guesses - 1;
+                        if (total_guesses < 0) {$("error_msg").html("Ha! That's it, your time's up. You done dropped the ball on this one. YOU LOSE!")
+                       } else {$("#numleft").html(total_guesses);}                                     
             
           }
           );
@@ -69,7 +72,7 @@
     </p>
   </div>
 
-  <div id="error" style="color: red;">
+  <div id="error_msg" style="color: red;">
     <p>Ha! You screwed up. That's pretty embarassing.</p>
     
   </div>

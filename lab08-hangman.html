@@ -1,95 +1,127 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Hangeth the Man</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script>
-    $(document).ready(
-      function() {
-          var total_guesses = 8;
-          var word = "hydroneumatic";
-          var blanks = "_ _ _ _ _ _ _ _ _ _ _ _ _";
-          var guesses = "";
-        
-      $(".letter").click(
-            function() {
-              var id = $(this).attr('id');
-              console.log("Clicked on " + id);
+<html> 
+  <header>
+    <title>Hangeth the Man!</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      $(document).ready( //when doc is ready, run the below word mess
+         function() {
+           
+            var total_guesses = 10;
+            var word = "h y d r o p n e u m a t i c";
+            var blanks = "_ _ _ _ _ _ _ _ _ _ _ _ _";
+            var guesses = "";
+               var game_over = false;
 
-            if (guesses.includes(id)) {
-              $("#error_msg").html("Ha! Silly, you already guessed " + id);
-            } else {
-                        guesses = guesses + id;
-                          $("#" + id).css('text-decoration', 'line-through');
+     $("#word").html(blanks);
+       
+           $(".letter").click( 
+                function() { 
+                var id = $(this).attr('id');
+                console.log("Clicked on " + id);
+
+                  
+              if(!game_over) {
+                              
+                
+                if (guesses.includes(id) ){
+                                            $("#error_msg").html("Silly, you've already guessed " + id);
+                                            }else{
+                                guesses = guesses + id;
+                                           $("#" + id).css('text-decoration', 'line-through');
+
+                total_guesses = total_guesses - 1;
+
+                if(total_guesses ≤ 0) {
+                  console.log("now less than 0 guesses");
+                  $("#error_msg").html("You've wasted all your efforts. YOU LOSE!");
+                  game_over = true;
+                }else{
+                  $("#numleft").html(total_guesses);
+
+                  if (word.includes(id)) { 
+                    var index = word.indexOf(id);
+                    console.log("letter " + id + " is at index " + index);
+
+                        blanks = blanks.substr(0, index) + id + blanks.substr(index + 1);
+
+                    $("#word").html(blanks);
+                  }
+
+                  if (blanks == word){
+                    $("#error_msg").html("Fine. I guess you can have this one.");
+                      }
+
+                  
+                            }
+                    }
+                }
+
+
               
-                        total_guesses = total_guesses - 1;
-                        if (total_guesses ≤ 0) {
-                          $("#error_msg").html("Ha! That's it, your time's up. You done dropped the ball on this one. YOU LOSE!")
-                        } else {
-                         $("#numleft").html(total_guesses);
-                        }    
-            }                                  
-          }
-          );
-      });
-  </script>
-
-</head>
-
+                }
+          )
+        
+        });
+    </script>
+  </header>
   
-<body>
-<h1>Hangman</h1>
-  <div id="chances">
-    <p>You have <span id="numleft">8</span> chances remaining.</p>
-  </div>
+  
+  
+  
+  
+  
+  <body>
+    <h1>Hangman!</h1>
 
-  <div id="wordspace">
-    <p>
-      The word to guess is <span id="word" style="font-weight: bold;"></span>
-                             </p>
+    <div id="guesses">
+      <p>
+        You have <span id= "numleft">10</span> guesses left. Don't mess up. 
+     
+      </p>
+    </div>
+
+    <div id="wordspace"> 
+      <p>
+        The word to guess is <span id="word" style="font-weight: bold;"></span>
+      </p>
+    </div>
+
+    <div id="entry">
+      <p>Click on a letter to select and enter your guess.</p>
+      <p>
+          <span class="letter" id="a">a</span>
+          <span class="letter" id="b">b</span>
+          <span class="letter" id="c">c</span>
+          <span class="letter" id="d">d</span>
+          <span class="letter" id="e">e</span>
+          <span class="letter" id="f">f</span>
+          <span class="letter" id="g">g</span>
+          <span class="letter" id="h">h</span>
+          <span class="letter" id="i">i</span>
+          <span class="letter" id="j">j</span>
+          <span class="letter" id="k">k</span>
+          <span class="letter" id="l">l</span>
+          <span class="letter" id="m">m</span>
+          <span class="letter" id="n">n</span>
+          <span class="letter" id="o">o</span>
+          <span class="letter" id="p">p</span>
+          <span class="letter" id="q">q</span>
+          <span class="letter" id="r">r</span>
+          <span class="letter" id="s">s</span>
+          <span class="letter" id="t">t</span>
+          <span class="letter" id="u">u</span>
+          <span class="letter" id="v">v</span>
+          <span class="letter" id="w">w</span>
+          <span class="letter" id="x">x</span>
+          <span class="letter" id="y">y</span>
+          <span class="letter" id="z">z</span>
+      
+      </p>
     
-  </div>
+    </div>
 
-  <div id="entry">
-    <p>Click on a letter to enter your guess.</p>
-    <p>
-      <span class="letter" id="a">a</span>
-      <span class="letter" id="b">b</span>
-      <span class="letter" id="c">c</span>
-      <span class="letter" id="d">d</span>
-      <span class="letter" id="e">e</span>
-      <span class="letter" id="f">f</span>
-      <span class="letter" id="g">g</span>
-      <span class="letter" id="h">h</span>
-      <span class="letter" id="i">i</span>
-      <span class="letter" id="j">j</span>
-      <span class="letter" id="k">k</span>
-      <span class="letter" id="l">l</span>
-      <span class="letter" id="m">m</span>
-      <span class="letter" id="n">n</span>
-      <span class="letter" id="o">o</span>
-      <span class="letter" id="p">p</span>
-      <span class="letter" id="q">q</span>
-      <span class="letter" id="r">r</span>
-      <span class="letter" id="s">s</span>
-      <span class="letter" id="t">t</span>
-      <span class="letter" id="u">u</span>
-      <span class="letter" id="v">v</span>
-      <span class="letter" id="w">w</span>
-      <span class="letter" id="x">x</span>
-      <span class="letter" id="y">y</span>
-      <span class="letter" id="z">z</span>
-    </p>
-  </div>
-
-  <div id="error_msg" style="color: red;">
-    <p>Ha! You screwed up. That's pretty embarassing.</p>
+    <div id="error_msg" style="color: red;"></div>
     
-  </div>
-
-  <div></div>
-
-  
-  
-</body>
+  </body>
 </html>

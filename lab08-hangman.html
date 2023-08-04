@@ -3,6 +3,26 @@
 <head>
   <title>Hangeth the Man</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    $(document).ready(
+      function() {
+          var total_guesses = 8;
+          var word = "hydroneumatic";
+          var blanks = "__ __ __ __ __ __ __ __ __ __ __ __ __";
+          var guesses = "";
+      $(".letter").click(
+            function() {
+            var id = $(this).attr('id');
+            console.log("Clicked on " + id);
+
+            if (guesses.includes(id) ) {$("error").html("You already guessed that one, silly.);}
+                  else {guesses = guesses + id; }                                      
+            
+          }
+          );
+      });
+  </script>
+
 </head>
 
   

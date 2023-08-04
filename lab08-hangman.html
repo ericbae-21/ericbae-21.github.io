@@ -15,10 +15,10 @@
             var id = $(this).attr('id');
             console.log("Clicked on " + id);
 
-            if (guesses.includes(id) ) {$("error_msg").html("You already guessed that one, silly.);}
+            if (guesses.includes(id) ) {$("#error_msg").html("You already guessed that one, silly.);}
                   else {guesses = guesses + id; 
                         total_guesses = total_guesses - 1;
-                        if (total_guesses < 0) {$("error_msg").html("Ha! That's it, your time's up. You done dropped the ball on this one. YOU LOSE!")
+                        if (total_guesses <= 0) {$("#error_msg").html("Ha! That's it, your time's up. You done dropped the ball on this one. YOU LOSE!")
                        } else {$("#numleft").html(total_guesses);}                                     
             
           }
@@ -32,7 +32,7 @@
 <body>
 <h1>Hangman</h1>
   <div id="chances">
-    <p>You have <span id="numleft">10</span> chances remaining.</p>
+    <p>You have <span id="numleft">8</span> chances remaining.</p>
   </div>
 
   <div id="wordspace">

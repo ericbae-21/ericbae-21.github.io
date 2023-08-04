@@ -32,9 +32,9 @@
 
                 total_guesses = total_guesses - 1;
 
-                if(total_guesses ≤ 0) {
+                if(total_guesses <= 0) {
                   console.log("now less than 0 guesses");
-                  $("#error_msg").html("You've wasted all your efforts. YOU LOSE!");
+                  $("#error_msg").html("You've wasted all your efforts. The Land of Hyrule belongs to me. YOU LOSE!");
                   game_over = true;
                 }else{
                   $("#numleft").html(total_guesses);

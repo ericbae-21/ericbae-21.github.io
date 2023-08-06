@@ -35,10 +35,15 @@
           })
 
           L.geoJson(rivers_geojson, {color: "blue",
-                                     opacity: .5
+                                     opacity: .5,
+                                     onEachFeature: function(feature, layer) {
+                                       layer.bindPopup("<b>River Name: "feature.properties.River_Name + "</b>")
+                                     }
                                     }).addTo(map);
+
         L.geoJson(bedrock_geojson, {color; "brown",
-                                    opacity: .5
+                                    opacity: .5,
+                                    onEachFeature: 
                                       }).addTo(map);
         
         

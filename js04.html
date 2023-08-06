@@ -43,7 +43,9 @@
 
         L.geoJson(bedrock_geojson, {color; "brown",
                                     opacity: .5,
-                                    onEachFeature: 
+                                    onEachFeature: function(feature, layer) {
+                                       layer.bindPopup("<b>River Name: "feature.properties.FullName + "</b>")
+                                     }
                                       }).addTo(map);
         
         

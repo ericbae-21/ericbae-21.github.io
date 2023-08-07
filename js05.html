@@ -58,7 +58,7 @@
         layers: [OpenStreetMap_HOT]
       });
       
-      L.geoJson(bedrock_geojson, { 
+     var rocktypeLayers = L.geoJson(bedrock_geojson, { 
         style: lineSymbology,
         onEachFeature: function(feature, layer) {
           layer.bindPopup("<b>Bedrock Formation Name: " + feature.properties.FullName + "</b><br>" + 

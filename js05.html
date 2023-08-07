@@ -9,12 +9,16 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
   crossorigin=""></script>
+
+
   
   <style>
     #map { height: 400px; width: 700px; } 
     html, body { height: 100%; margin: 0; padding: 0; }
   </style>
- 
+
+
+  
   
   <script src="NHBedrock.geojson"></script> 
   <script src="NHRivers.geojson"></script> 
@@ -26,6 +30,7 @@
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href ="http://hot.osm.org">HOT OSM</a>'
     });
 
+    
     function lineSymbology(feature) {
       var rocktype = feature.properties.Rock_Type;
       var lineWidth = 2;
@@ -36,12 +41,14 @@
       if (rocktype == "Igneous") { lineColor = "#d95f0e"; lineWidth = 4;}
       
       return {
-          color: lineColor,
-          weight: lineWidth,
-          opacity: .5 , 
+        color: lineColor,
+        weight: lineWidth,
+        opacity: .5 , 
         
       };
     }
+
+
     
     function initialize() {
       var map = L.map('map', {
@@ -51,16 +58,17 @@
       });
       
       L.geoJson(bedrock_geojson, { 
-         style: lineSymbology,
-        onEachFeature: function(feature, layer) 
+        style: lineSymbology,
+        onEachFeature: function(feature, layer) {
           layer.bindPopup("<em>Bedrock Formation Name: " + feature.properties.FullName + "</em>");
         }
       }).addTo(map);
+
       
       L.geoJson(rivers_geojson, {
         color: "blue",
         weight: 5,
-        onEachFeature: function(feature, layer)
+        onEachFeature: function(feature, layer) {
           layer.bindPopup("<em>River: " + feature.properties.River_Sect + "</em>");
         }
       }).addTo(map);
@@ -68,12 +76,9 @@
   </script>
 </head>
 
-
-
-  
-  <body onload="initialize()">
+<body onload="initialize()">
   <h1>Hello!</h1>
-    <h3>Ya like rocks? Ya like water? Learn a bit more about the rocks and water around you.</h3>
+  <h3>Ya like rocks? Ya like water? Learn a bit more about the rocks and water around you.</h3>
   <div id="map"></div>
 </body>
 </html>

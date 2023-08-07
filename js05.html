@@ -9,8 +9,11 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
   crossorigin=""></script>
- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
+
+
+
   
   <style>
     #map { height: 400px; width: 700px; } 
@@ -18,11 +21,10 @@
   </style>
 
 
-  
+
   
   <script src="NHBedrock.geojson"></script> 
   <script src="NHRivers.geojson"></script> 
-  
   
   <script>
     var rocktypeVisible = false;
@@ -31,7 +33,9 @@
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href ="http://hot.osm.org">HOT OSM</a>'
     });
 
-var stamenLayer = new L.StamentTileLayer("terrain");
+    
+    var stamenLayer = new L.StamenTileLayer("terrain");
+
     
     function lineSymbology(feature) {
       var rocktype = feature.properties.Rock_Type;
@@ -58,12 +62,14 @@ var stamenLayer = new L.StamentTileLayer("terrain");
         zoom: 15, 
       });
 
+      
       var baseMaps = { "QSM" : OpenStreetMap_HOT,
                       "Stamen" : stamenLayer
-        
-      }
+      };
 
       L.control.layers(baseMaps).addTo(map);
+
+
       
      var rocktypeLayers = L.geoJson(bedrock_geojson, { 
         style: lineSymbology,
@@ -72,11 +78,12 @@ var stamenLayer = new L.StamentTileLayer("terrain");
                           feature.properties.Rock_Type + "<br>" +
                           feature.properties.FORMATION1 + "<br>" +
                           feature.properties.FORMATION2 + "<br>" +
-                           "<em>" + feature.properties.Source + "</em><br>"
+                          "<em>" + feature.properties.Source + "</em><br>"
                          );
         }
       }).addTo(map);
 
+      
       
       L.geoJson(rivers_geojson, {
         color: "blue",
@@ -86,19 +93,21 @@ var stamenLayer = new L.StamentTileLayer("terrain");
         }
       }).addTo(map);
 
-    $("#trocklayer").click( function () {
+    $("#trocklayer").click(function () {
         if (rocktypeVisible) {
           rocktypeVisible = false; 
           rocktypeLayers.removeFrom(map);
         } else {
           rocktypeVisible = true;
           rocktypeLayers.addTo(map);
-        }
-      
-    })
-      
-    }
+          }
+        });
+      }
   </script>
+
+
+
+  
 </head>
 
 <body onload="initialize()">
@@ -106,9 +115,7 @@ var stamenLayer = new L.StamentTileLayer("terrain");
   <h3>Ya like rocks? Ya like water? Learn a bit more about the rocks and water around you.</h3>
   <div id="map"></div>
   <div id="buttons">
-      <button id="trocklayer">Toggle Bedrock Layer</button>
-    
+    <button id="trocklayer">Toggle Bedrock Layer</button>
   </div>
-  
 </body>
 </html>

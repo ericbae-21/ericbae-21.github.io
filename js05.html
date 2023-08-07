@@ -26,11 +26,9 @@
       maxZoom: 19, 
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href ="http://hot.osm.org">HOT OSM</a>'
     });
-
     
     var stamenLayer = new L.StamenTileLayer("terrain");
 
-    
     function lineSymbology(feature) {
       var rocktype = feature.properties.Rock_Type;
       var lineWidth = 2;
@@ -44,12 +42,9 @@
         color: lineColor,
         weight: lineWidth,
         opacity: .5 , 
-        
       };
     }
 
-
-    
     function initialize() {
       var map = L.map('map', {
         center: [43.7034, -72.2887],
@@ -63,8 +58,6 @@
 
       L.control.layers(baseMaps).addTo(map);
 
-
-      
      var rocktypeLayers = L.geoJson(bedrock_geojson, { 
         style: lineSymbology,
         onEachFeature: function(feature, layer) {
@@ -76,8 +69,6 @@
                          );
         }
       }).addTo(map);
-
-      
       
       L.geoJson(rivers_geojson, {
         color: "blue",
@@ -98,10 +89,6 @@
         });
       }
   </script>
-
-
-
-  
 </head>
 
 <body onload="initialize()">

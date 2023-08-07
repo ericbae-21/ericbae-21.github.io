@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head> 
+  
   <title>Hanover's Bedrock and Rivers</title>
   <!-- Did I do it right, mom? Make sure you put this AFTER Leaflet's CSS -->
+ 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
   integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
   crossorigin=""/>
    <!-- Ok, this is the Leaflet JavaScript -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
   crossorigin=""></script>
   <!-- Now I will include the StamenTileLayer Plugin , this should hopefully get the page to load, right?-->
-  <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
+    <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
    <!-- the JQuery or JavaScript one-->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
   
   <style>
     #map { height: 400px; width: 700px; } 
@@ -24,14 +25,17 @@
   <script src="NHBedrock.geojson"></script> 
   <script src="NHRivers.geojson"></script> 
   
+  
+  
+  
   <script>
     var rocktypeVisible = false;
     var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
       maxZoom: 19, 
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href ="http://hot.osm.org">HOT OSM</a>'
     });
-    
-    var stamenLayer = new L.StamenTileLayer("terrain");
+
+    var stamenLayer;
 
     function lineSymbology(feature) {
       var rocktype = feature.properties.Rock_Type;
@@ -41,6 +45,7 @@
       if (rocktype == "Metamorphic") { lineColor = "#fff7bc"; lineWidth = 4;}
       if (rocktype == "Sedimentary") { lineColor = "#fec44f"; lineWidth = 4;}
       if (rocktype == "Plutonic") { lineColor = "#d95f0e"; lineWidth = 4;}
+
       
       return {
         color: lineColor,
@@ -50,11 +55,12 @@
     }
 
     function initialize() {
-      var map = L.map('map', {
-        center: [43.7034, -72.2887],
-        zoom: 15, 
-      });
+        var map = L.map('map', {
+          center: [43.7034, -72.2887],
+          zoom: 15, 
+        });
 
+  stamenLayer = new L.StamenTileLayer("terrain");
       
       var baseMaps = { "QSM" : OpenStreetMap_HOT,
                       "Stamen" : stamenLayer
@@ -62,7 +68,9 @@
 
       L.control.layers(baseMaps).addTo(map);
 
-     var rocktypeLayers = L.geoJson(bedrock_geojson, { 
+
+      
+      var rocktypeLayers = L.geoJson(bedrock_geojson, { 
         style: lineSymbology,
         onEachFeature: function(feature, layer) {
           layer.bindPopup("<b>Bedrock Formation Name: " + feature.properties.FullName + "</b><br>" + 
@@ -82,19 +90,24 @@
         }
       }).addTo(map);
 
-    $("#trocklayer").click(function () {
+
+      
+      $("#trocklayer").click(function () {
         if (rocktypeVisible) {
           rocktypeVisible = false; 
           rocktypeLayers.removeFrom(map);
         } else {
           rocktypeVisible = true;
           rocktypeLayers.addTo(map);
-          }
-        });
-      }
+        }
+      });
+    }
   </script>
 </head>
 
+
+
+  
 <body onload="initialize()">
   <h1>Hello!</h1>
   <h3>Ya like rocks? Ya like water? Learn a bit more about the rocks and water around you.</h3>

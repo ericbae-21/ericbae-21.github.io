@@ -25,6 +25,7 @@
   
   
   <script>
+    var rocktypeVisible = false;
     var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
       maxZoom: 19, 
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href ="http://hot.osm.org">HOT OSM</a>'
@@ -77,6 +78,18 @@
           layer.bindPopup("<em>River: " + feature.properties.River_Sect + "</em>");
         }
       }).addTo(map);
+
+    $("#trocklayer").click( function () {
+        if (rocktypeVisible) {
+          rocktypeVisible = false; 
+          rocktypeLayers.removeFrom(map);
+        } else {
+          rocktypeVisible = true;
+          rocktypeLayers.addTo(map);
+        }
+      
+    })
+      
     }
   </script>
 </head>
@@ -85,5 +98,10 @@
   <h1>Hello!</h1>
   <h3>Ya like rocks? Ya like water? Learn a bit more about the rocks and water around you.</h3>
   <div id="map"></div>
+  <div id="buttons">
+      <button id="trocklayer">Toggle Rock Layers</button>
+    
+  </div>
+  
 </body>
 </html>

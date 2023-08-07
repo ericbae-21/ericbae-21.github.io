@@ -60,11 +60,11 @@
       L.geoJson(bedrock_geojson, { 
         style: lineSymbology,
         onEachFeature: function(feature, layer) {
-          layer.bindPopup("<em>Bedrock Formation Name: " + feature.properties.FullName + "</em><br>" + 
+          layer.bindPopup("<b>Bedrock Formation Name: " + feature.properties.FullName + "</b><br>" + 
                           feature.properties.Rock_Type + "<br>" +
                           feature.properties.Formation1 + "<br>" +
                           feature.properties.Formation2 + "<br>" +
-                           feature.properties.Source + "<br>"
+                           <em>feature.properties.Source</em> + "<br>"
                          );
         }
       }).addTo(map);

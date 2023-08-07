@@ -12,8 +12,7 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
   crossorigin=""></script>
-  <!-- Now I will include the StamenTileLayer Plugin , this should hopefully get the page to load, right?-->
-    <script type="text/javascript" src="https://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
+
    <!-- the JQuery or JavaScript one-->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   
@@ -35,7 +34,12 @@
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href ="http://hot.osm.org">HOT OSM</a>'
     });
 
-    var stamenLayer;
+    var Esri_WorldTerrain = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: USGS, Esri, TANA, DeLorme, and NPS',
+	maxZoom: 13
+});
+
+    var Esri_WorldTerrain;
 
     function lineSymbology(feature) {
       var rocktype = feature.properties.Rock_Type;
@@ -58,13 +62,9 @@
         var map = L.map('map', {
           center: [43.7034, -72.2887],
           zoom: 15, 
+          layers: [Esri_WorldTerrain]
+          
         });
-
-  stamenLayer = new L.StamenTileLayer("terrain");
-      
-      var baseMaps = { "QSM" : OpenStreetMap_HOT,
-                      "Stamen" : stamenLayer
-      };
 
       L.control.layers(baseMaps).addTo(map);
 

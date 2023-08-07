@@ -12,7 +12,6 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
   crossorigin=""></script>
-
    <!-- the JQuery or JavaScript one-->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   
@@ -20,7 +19,6 @@
     #map { height: 400px; width: 700px; } 
     html, body { height: 100%; margin: 0; padding: 0; }
   </style>
-
   <script src="NHBedrock.geojson"></script> 
   <script src="NHRivers.geojson"></script> 
   
@@ -33,27 +31,36 @@
       maxZoom: 19, 
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href ="http://hot.osm.org">HOT OSM</a>'
     });
-
-    var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-});
+    var Esri_WorldTerrain = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: USGS, Esri, TANA, DeLorme, and NPS',
+	maxZoom: 13
 });
 
 	  var baseMaps = {
   "OpenStreetMap_HOT": OpenStreetMap_HOT,
-  "Esri_WorldImagery": Esri_WorldImagery
+  "Esri World Terrain": Esri_WorldTerrain
 };
 
 
     function lineSymbology(feature) {
       var rocktype = feature.properties.Rock_Type;
+
+    
+          
+            
+    
+
+          
+          Expand Down
+    
+    
+  
       var lineWidth = 2;
       var lineColor = "#a1d99b";
     
       if (rocktype == "Metamorphic") { lineColor = "#fff7bc"; lineWidth = 4;}
       if (rocktype == "Sedimentary") { lineColor = "#fec44f"; lineWidth = 4;}
       if (rocktype == "Plutonic") { lineColor = "#d95f0e"; lineWidth = 4;}
-
       
       return {
         color: lineColor,
@@ -61,18 +68,14 @@
         opacity: .5 , 
       };
     }
-
     function initialize() {
         var map = L.map('map', {
           center: [43.7034, -72.2887],
           zoom: 15, 
-          layers: [Esri_WorldImagery]
+          layers: [Esri_WorldTerrain]
           
         });
-
       L.control.layers(baseMaps).addTo(map);
-
-
       
       var rocktypeLayers = L.geoJson(bedrock_geojson, { 
         style: lineSymbology,
@@ -93,8 +96,6 @@
           layer.bindPopup("<em>River: " + feature.properties.River_Sect + "</em>");
         }
       }).addTo(map);
-
-
       
       $("#trocklayer").click(function () {
         if (rocktypeVisible) {
@@ -108,9 +109,6 @@
     }
   </script>
 </head>
-
-
-
   
 <body onload="initialize()">
   <h1>Hello!</h1>

@@ -11,7 +11,7 @@
   crossorigin=""></script>
   
   <style>
-    #map { height: 400px; width: 700px; } /* Corrected width value */
+    #map { height: 400px; width: 700px; } 
     html, body { height: 100%; margin: 0; padding: 0; }
   </style>
  
@@ -26,6 +26,8 @@
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href ="http://hot.osm.org">HOT OSM</a>'
     });
 
+
+    
     function initialize() {
       var map = L.map('map', {
         center: [43.7034, -72.2887],
@@ -33,11 +35,11 @@
         layers: [OpenStreetMap_HOT]
       });
 
-      L.geoJson(bedrock_geojson, { // Corrected the variable name from 'Layer' to 'layer'
+      L.geoJson(bedrock_geojson, { 
         color: "green",
         weight: 3,
         opacity: 0.5,
-        onEachFeature: function(feature, layer) { // Corrected the variable name from 'Layer' to 'layer'
+        onEachFeature: function(feature, layer) 
           layer.bindPopup("<em>Bedrock Formation Name: " + feature.properties.FullName + "</em>");
         }
       }).addTo(map);
@@ -45,13 +47,15 @@
       L.geoJson(rivers_geojson, {
         color: "blue",
         weight: 5,
-        onEachFeature: function(feature, layer) { // Corrected the variable name from 'Layer' to 'layer'
+        onEachFeature: function(feature, layer)
           layer.bindPopup("<em>River: " + feature.properties.River_Sect + "</em>");
         }
       }).addTo(map);
     }
   </script>
 </head>
+
+
 
   
   <body onload="initialize()">

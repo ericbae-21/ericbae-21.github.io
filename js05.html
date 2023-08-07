@@ -34,17 +34,14 @@
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href ="http://hot.osm.org">HOT OSM</a>'
     });
 
-    var Jawg_Terrain = L.tileLayer('https://{s}.tile.jawg.io/jawg-terrain/{z}/{x}/{y}{r}.png?access-token={accessToken}', {
-	attribution: '<a href="http://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-	minZoom: 0,
-	maxZoom: 22,
-	subdomains: 'abcd',
-	accessToken: '<your accessToken>'
+    var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+});
 });
 
 	  var baseMaps = {
   "OpenStreetMap_HOT": OpenStreetMap_HOT,
-  "Jawg_Terrain": Jawg_Terrain
+  "Esri_WorldImagery": Esri_WorldImagery
 };
 
 
@@ -69,7 +66,7 @@
         var map = L.map('map', {
           center: [43.7034, -72.2887],
           zoom: 15, 
-          layers: [Jawg_Terrain]
+          layers: [Esri_WorldImagery]
           
         });
 

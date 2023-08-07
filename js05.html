@@ -61,9 +61,9 @@
         style: lineSymbology,
         onEachFeature: function(feature, layer) {
           layer.bindPopup("<em>Bedrock Formation Name: " + feature.properties.FullName + "</em><br>" + 
-                          feature.properties.Rock_Type + "<br>"
-                          feature.properties.Formation1 + "<br>"
-                          feature.properties.Formation2 + "<br>"
+                          feature.properties.Rock_Type + "<br>" +
+                          feature.properties.Formation1 + "<br>" +
+                          feature.properties.Formation2 + "<br>" +
                            feature.properties.Source + "<br>"
                          );
         }

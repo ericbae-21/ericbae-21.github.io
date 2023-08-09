@@ -19,7 +19,7 @@
     #map { height: 400px; width: 700px; } 
     html, body { height: 100%; margin: 0; padding: 0; }
   </style>
-  <script src="NHBedrock.geojson"></script> 
+<!-- this is where i removed the link -->
   <script src="NHRivers.geojson"></script> 
   
   
@@ -69,10 +69,22 @@
         });
       L.control.layers(baseMaps).addTo(map);
       
-      var rocktypeLayers = L.geoJson(bedrock_geojson, { 
-        style: lineSymbology,
-        onEachFeature: function(feature, layer) {
-          layer.bindPopup("<b>Bedrock Formation Name: " + feature.properties.FullName + "</b><br>" + 
+
+	    
+var response = $.ajax({
+	url: "NHBedrock1.geojson",
+	dataType: "json",
+	success: console.log("Bedrock data loaded."),
+	error: function(xhr) {
+		alert(xhr.statusText);
+	}
+});
+	    
+$.when(response).done(function() {
+	      var rocktypeLayers = L.geoJson(response.responseJSON, { 
+        	style: lineSymbology,
+     			   onEachFeature: function(feature, layer) {
+      		    layer.bindPopup("<b>Bedrock Formation Name: " + feature.properties.FullName + "</b><br>" + 
                           feature.properties.Rock_Type + "<br>" +
                           feature.properties.FORMATION1 + "<br>" +
                           feature.properties.FORMATION2 + "<br>" +
@@ -80,16 +92,8 @@
                          );
         }
       }).addTo(map);
-      
-      L.geoJson(rivers_geojson, {
-        color: "blue",
-        weight: 5,
-        onEachFeature: function(feature, layer) {
-          layer.bindPopup("<em>River: " + feature.properties.River_Sect + "</em>");
-        }
-      }).addTo(map);
-      
-      $("#trocklayer").click(function () {
+	$("#trocklayer").show();
+	  $("#trocklayer").click(function () {
         if (rocktypeVisible) {
           rocktypeVisible = false; 
           rocktypeLayers.removeFrom(map);
@@ -98,6 +102,18 @@
           rocktypeLayers.addTo(map);
         }
       });
+
+})
+	    
+      L.geoJson(rivers_geojson, {
+        color: "blue",
+        weight: 5,
+        onEachFeature: function(feature, layer) {
+          layer.bindPopup("<em>River: " + feature.properties.River_Sect + "</em>");
+        }
+      }).addTo(map);
+      
+    
     }
   </script>
 </head>
@@ -107,7 +123,7 @@
   <h3>Ya like rocks? Ya like water? Learn a bit more about the rocks and water around you.</h3>
   <div id="map"></div>
   <div id="buttons">
-    <button id="trocklayer">Toggle Bedrock Layer</button>
+    <button id="trocklayer" hidden>Toggle Bedrock Layer</button>
   </div>
 </body>
 </html>

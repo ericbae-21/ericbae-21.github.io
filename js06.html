@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head> 
+  
+  <title>Hanover's Bedrock and Rivers</title>
+
+ 
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+  crossorigin=""/>
+   <!-- Ok, this is the Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+  crossorigin=""></script>
+   <!-- the JQuery or JavaScript one-->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <style>
+    #map { height: 400px; width: 700px; } 
+    html, body { height: 100%; margin: 0; padding: 0; }
+  </style>
+  <script src="NHBedrock.geojson"></script> 
+  <script src="NHRivers.geojson"></script> 
+  
+  
+  
+  
+  <script>
+    var rocktypeVisible = false;
+    var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+      maxZoom: 19, 
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href ="http://hot.osm.org">HOT OSM</a>'
+    });
+    var Esri_WorldTerrain = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: USGS, Esri, TANA, DeLorme, and NPS',
+	maxZoom: 13
+});
+
+	  var baseMaps = {
+  "OpenStreetMap_HOT": OpenStreetMap_HOT,
+  "Esri World Terrain": Esri_WorldTerrain
+};
+
+
+    function lineSymbology(feature) {
+      var rocktype = feature.properties.Rock_Type;
+
+    
+  
+      var lineWidth = 2;
+      var lineColor = "#a1d99b";
+    
+      if (rocktype == "Metamorphic") { lineColor = "#fff7bc"; lineWidth = 4;}
+      if (rocktype == "Sedimentary") { lineColor = "#fec44f"; lineWidth = 4;}
+      if (rocktype == "Plutonic") { lineColor = "#d95f0e"; lineWidth = 4;}
+      
+      return {
+        color: lineColor,
+        weight: lineWidth,
+        opacity: .5 , 
+      };
+    }
+    function initialize() {
+        var map = L.map('map', {
+          center: [43.7034, -72.2887],
+          zoom: 15, 
+          layers: [Esri_WorldTerrain]
+          
+        });
+      L.control.layers(baseMaps).addTo(map);
+      
+      var rocktypeLayers = L.geoJson(bedrock_geojson, { 
+        style: lineSymbology,
+        onEachFeature: function(feature, layer) {
+          layer.bindPopup("<b>Bedrock Formation Name: " + feature.properties.FullName + "</b><br>" + 
+                          feature.properties.Rock_Type + "<br>" +
+                          feature.properties.FORMATION1 + "<br>" +
+                          feature.properties.FORMATION2 + "<br>" +
+                          "<em>" + feature.properties.Source + "</em><br>"
+                         );
+        }
+      }).addTo(map);
+      
+      L.geoJson(rivers_geojson, {
+        color: "blue",
+        weight: 5,
+        onEachFeature: function(feature, layer) {
+          layer.bindPopup("<em>River: " + feature.properties.River_Sect + "</em>");
+        }
+      }).addTo(map);
+      
+      $("#trocklayer").click(function () {
+        if (rocktypeVisible) {
+          rocktypeVisible = false; 
+          rocktypeLayers.removeFrom(map);
+        } else {
+          rocktypeVisible = true;
+          rocktypeLayers.addTo(map);
+        }
+      });
+    }
+  </script>
+</head>
+  
+<body onload="initialize()">
+  <h1>Hello!</h1>
+  <h3>Ya like rocks? Ya like water? Learn a bit more about the rocks and water around you.</h3>
+  <div id="map"></div>
+  <div id="buttons">
+    <button id="trocklayer">Toggle Bedrock Layer</button>
+  </div>
+</body>
+</html>

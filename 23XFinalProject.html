@@ -34,9 +34,23 @@
       padding top: 10px;
       font-family: baskerville, serif;
     ;}
-
-  
   </style>
+
+  <script>
+     
+      var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+                                          { maxZoom: 19, 
+                                             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href ="http://hot.osm.org">HOT OSM</a>'   
+                                          })
+      
+      function initialize() {
+          var map = L.map('map1', {
+              center: [32.474837307992985, 44.42437047175668 ],
+              zoom: 10, 
+            layers: [OpenStreetMap_HOT]
+          })
+      }
+    </script>
   
 </head>
   

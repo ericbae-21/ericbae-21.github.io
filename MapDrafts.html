@@ -18,19 +18,17 @@
   html, body { height: 100%; margin: 20px; padding-top: 5px;}
   #map1 { height: 450px; width: 60%; 
          padding: 25px;
-        margin-left: auto;
+         margin-left: auto;
          margin-right: auto;
-         ;}
+  ;}
 
-
-  #buttons {
+  .button {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
     padding: 5px;
-  }
-  </style>
-  
+  ;}
+</style>
 </head>
   
 <body onload="initialize()">
@@ -38,9 +36,10 @@
   <div class="button">
     <button id="AchEmpire">View/Hide Achaemenid Empire Borders, c. 500 BC</button>
   </div>
-<div class="button">
+  <div class="button">
     <button id="AncCities">View/Hide Key Antique Cities</button>
   </div>
+
   
   <script>
     var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
@@ -59,24 +58,24 @@
 
     var imageUrl = 'Achaemenid_Empire_(flat_map).svg';
     var imageOverlay = L.imageOverlay(imageUrl, imageBounds, { opacity: 0.4 });
-      imageOverlay.addTo(map1);
-    
+    imageOverlay.addTo(map1);
+
     var marker1 = L.marker([32.47527176162417, 44.42454213313517]).addTo(map1);
-marker1.bindPopup("<b>Ancient Babylon, c. 500 BC</b>").openPopup();
+    marker1.bindPopup("<b>Ancient Babylon, c. 500 BC</b>").openPopup();
+
     var marker2 = L.marker([33.354017681573346, 43.76669790777375]).addTo(map1);
-marker2.bindPopup("<b>Ancient Pumbedita, c. 300 BC</b>").openPopup();
-    
-    
+    marker2.bindPopup("<b>Ancient Pumbedita, c. 300 BC</b>").openPopup();
+
     $("#AchEmpire").click(function () {
       if (map1.hasLayer(imageOverlay)) {
         map1.removeLayer(imageOverlay);
       } else {
         imageOverlay.addTo(map1);
       }
-    });
+    ;});
 
   
-    
   </script>
+
 </body>
 </html>

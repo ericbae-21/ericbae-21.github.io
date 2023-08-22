@@ -16,8 +16,7 @@ integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
 
 <style>
 
-  html, body { height: 100%; margin: 20px; padding-top: 5px;}
-  
+  html, body { height: 100%; margin: 20px; padding-top: 5px;};
   .text-element#title{
     padding-right: 70px;
       padding-left: 70px;
@@ -51,9 +50,16 @@ integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
 
   #map1 { height: 450px; width: 60%; 
          padding: 25px;
-        margin-left: auto;
+         margin-left: auto;
          margin-right: auto;
-         ;}
+  ;}
+  
+  .button {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+  ;}
   
   </style>
 
@@ -83,6 +89,60 @@ var imageUrl = 'Achaemenid_Empire_(flat_map).svg';
 </head>
   
 <body onload ="initialize()">
+
+  <script>
+    var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+      { maxZoom: 19, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href ="http://hot.osm.org">HOT OSM</a>' });
+
+    var map1 = L.map('map1', {
+      center: [32.474837307992985, 44.42437047175668],
+      zoom: 5,
+      layers: [OpenStreetMap_HOT]
+    });
+
+    var imageBounds = [
+      [10.795393, 0.196245], // Southwest corner
+      [49.886841, 90.491791]  // Northeast corner
+    ];
+
+    var imageUrl = 'Achaemenid_Empire_(flat_map).svg';
+    var imageOverlay = L.imageOverlay(imageUrl, imageBounds, { opacity: 0.4 });
+    imageOverlay.addTo(map1);
+    
+    var marker1 = L.marker([32.47527176162417, 44.42454213313517]).addTo(map1);
+    marker1.bindPopup("<b>Ancient Babylon,</b> <em>c. 5th-6th century BC</em>").openPopup();
+    var marker2 = L.marker([33.354017681573346, 43.76669790777375]).addTo(map1);
+    marker2.bindPopup("<b>Ancient Pumbedita,</b> <em>c. 4th century AD</em>").openPopup();
+    var marker3 = L.marker([37.621332, 61.850624]).addTo(map1);
+    marker3.bindPopup("<b>Ancient Merv,</b> <em>c. 4th century AD</em>" + "<br>" + "Also called <em>Marv, Merv Oasis.</em> (N.B. - <em>Moved 30 km westward toward Mary on map for visibility.</em>" + "<br>" + "Burton, “Bukharan Jews, Ancient and Modern,” 44; Kaganovitch, “The Jewish Communities of Central Asia in the Medieval and Early Modern Periods,” 923; Michael Shterenshis, <em>Tamerlane and the Jews</em> (Hoboken: Routledge, 2013): 16-17.").openPopup();
+    var marker4 = L.marker([41.67524257451834, 60.75967224548145]).addTo(map1);
+    marker4.bindPopup("<b>Ancient Kath,</b> <em>c. 6th century AD</em>" + "<br>" + "Capital of Khorezm and notable ancient city of the Province of Khorosan. Also called <em>Kat,</em> now <em>Beruniy.</em>" + "<br>" + "Zand, “Bukharan Jews,” 532.").openPopup();
+  var marker5 = L.marker([37.67189408065564, 62.192573275160186]).addTo(map1);
+    marker5.bindPopup("<b>Erk Kala Archaeological Site</b> <em>c. 4th century AD</em>" + "<br>" + "<img src='MervOasis1.png' alt='MervOasis1' style='height: 65px; width: auto; padding: 5px;'>" +
+  "<img src='MervOasis2.png' alt='MervOasis2' style='height: 65px; width: auto; padding: 5px;'>" + "<br>" + "Citadel of Ancient Merv bearing sherds with Parthian inscriptions." + "<br>" + "Livshits and Osmanova, “New Parthian Inscriptions,” 99–105; Ershov, “Nekotorye itogi,” 179–80.").openPopup();
+    
+    
+    var cityMarkers = L.featureGroup([marker1, marker2, marker3, marker4, marker5]).addTo(map1);
+    
+    $("#AchEmpire").click(function () {
+      if (map1.hasLayer(imageOverlay)) {
+        map1.removeLayer(imageOverlay);
+      } else {
+        imageOverlay.addTo(map1);
+      }
+    ;});
+
+    $("#AncCities").click(function () {
+      if (map1.hasLayer(cityMarkers)) {
+        cityMarkers.removeFrom(map1);
+      } else {
+        cityMarkers.addTo(map1);
+      }
+    });
+
+  </script>
+
+  
   <h1 class="text-element" id="title">A Brief History of Central Asian Jews: Iron Age Enigma</h1>
   <h3 class="text-element" id="chapter">Introduction</h3>
   <p class="text-element" id="Body">
@@ -112,6 +172,12 @@ var imageUrl = 'Achaemenid_Empire_(flat_map).svg';
     </p>
 
 <div id="map1"></div>
+  <div class="button">
+    <button id="AchEmpire">View/Hide Achaemenid Empire Borders, c. 500 BC</button>
+  </div>
+  <div class="button">
+    <button id="AncCities">View/Hide Key Antique Cities</button>
+  </div>
   
   <p class="text-element" id="Body">
     The first indicators of Jewish settlement in Transoxiana come from a 4th century AD Babylonian Talmud story, “<em>Avodah Zara,</em>” from Pumbedita.<sup id="note">11</sup> Pumbedita was an ancient city located near the modern-day city of Fallujah, Iraq, and quite an influential one. The story describes how Semu’el bar Bisena, an amora or authority on Judaic law, doubts the ritual cleanliness of Jews living in Merv and refuses to drink their alcohol. Some Jewish studies scholars have interpreted this as strong evidence for Jewish presence in the Merv Oasis even earlier than the 4th century AD.<sup id="note">12</sup>  Bar Bisena’s suspicions of insufficient knowledge of Judaic rituals in Merv imply that a substantial Jewish settlement had existed in Transoxiana for several generations, or at least long enough for an amora from Babylon to recognize the population there. A second source from the 6th century AD, Šahrestānīhā-ye Ērānšahr, shows evidence of Jewish settlements even farther north in Transoxiana. The source claims that the capital of Khorezm, Kath, was founded by Narseh, the son of a Jew, perhaps in an attempt to explain the presence of Jews in Khorezm.<sup id="note">13</sup> The most robust evidence for an enduring Jewish presence in Central Asia comes from a series of archaeological discoveries in Merv dating back to the 2nd or 3rd century AD.<sup id="note">14</sup> These discoveries include objects with Hebrew inscriptions, dishes, and ossuaries from the 5th and 6th centuries AD.<sup id="note">15</sup> They also include Khorezmian coins from the first half of the 8th century with an Aramaic font and strong Hebrew features to record Khorezmian, a language in the East Iranian subgroup.<sup id="note">16</sup>

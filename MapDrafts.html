@@ -21,7 +21,7 @@
          margin-left: auto;
          margin-right: auto;
   ;}
-
+  
   .button {
     text-align: center;
     margin-left: auto;
@@ -69,7 +69,8 @@
     var marker4 = L.marker([41.67524257451834, 60.75967224548145]).addTo(map1);
     marker4.bindPopup("<b>Ancient Kath,</b> <em>c. 6th century AD</em>" + "<br>" + "Capital of Khorezm and notable ancient city of the Province of Khorosan. Also called <em>Kat,</em> now <em>Beruniy.</em>" + "<br>" + "Zand, “Bukharan Jews,” 532.").openPopup();
   var marker5 = L.marker([37.67189408065564, 62.192573275160186]).addTo(map1);
-    marker5.bindPopup("<b>Erk Kala Archaeological Site</b> <em>c. 4th century AD</em>" + "<br>" + "<img src=MervOasis1.png alt='MervOasis1'>" + "<img src=MervOasis2.png alt='MervOasis2'>" + "<br>" + "Citadel of Ancient Merv bearing sherds with Parthian inscriptions." + "<br>" + "Livshits and Osmanova, “New Parthian Inscriptions,” 99–105; Ershov, “Nekotorye itogi,” 179–80.").openPopup();
+    marker5.bindPopup("<b>Erk Kala Archaeological Site</b> <em>c. 4th century AD</em>" + "<br>" + "<img src='MervOasis1.png' alt='MervOasis1' style='height: 45px; width: auto; padding: 5px;'>" +
+  "<img src='MervOasis2.png' alt='MervOasis2' style='height: 45px; width: auto; padding: 5px;'>" + "<br>" + "Citadel of Ancient Merv bearing sherds with Parthian inscriptions." + "<br>" + "Livshits and Osmanova, “New Parthian Inscriptions,” 99–105; Ershov, “Nekotorye itogi,” 179–80.").openPopup();
     
     
     var cityMarkers = L.featureGroup([marker1, marker2, marker3, marker4]).addTo(map1);

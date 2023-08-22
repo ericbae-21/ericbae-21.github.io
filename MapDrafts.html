@@ -44,11 +44,23 @@
         var imageUrl = 'Achaemenid_Empire_(flat_map).svg';
         L.imageOverlay(imageUrl, imageBounds, { opacity:0.4}).addTo(map1);
       }
+
+     $("#AchEmpire").click(function () {
+        if (imageURL) {
+          imageURLVisible = true; 
+          imageURL.removeFrom(map);
+        } else {
+          imageURLVisible = false;
+          imageURL.addTo(map);
+        }
+      });
     </script>
   
 </head>
   
 <body onload="initialize()">
   <div id="map1"></div>
+   <div id="buttons">
+    <button id="AchEmpire">View/Hide Achaemenid Empire Borders, c. 500 BC</button>
 </body>
 </html>

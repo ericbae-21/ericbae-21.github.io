@@ -35,10 +35,10 @@
   
 <body onload="initialize()">
   <div id="map1"></div>
-  <div id="buttons">
+  <div class="button">
     <button id="AchEmpire">View/Hide Achaemenid Empire Borders, c. 500 BC</button>
   </div>
-<div id="buttons">
+<div class="button">
     <button id="AncCities">View/Hide Key Antique Cities</button>
   </div>
   
@@ -59,11 +59,12 @@
 
     var imageUrl = 'Achaemenid_Empire_(flat_map).svg';
     var imageOverlay = L.imageOverlay(imageUrl, imageBounds, { opacity: 0.4 });
-
+      imageOverlay.addTo(map1);
+    
     var marker1 = L.marker([32.47527176162417, 44.42454213313517]).addTo(map1);
-marker.bindPopup("<b>Ancient Babylon, c. 500 BC</b>").openPopup();
+marker1.bindPopup("<b>Ancient Babylon, c. 500 BC</b>").openPopup();
     var marker2 = L.marker([33.354017681573346, 43.76669790777375]).addTo(map1);
-marker.bindPopup("<b>Ancient Pumbedita, c. 300 BC</b>").openPopup();
+marker2.bindPopup("<b>Ancient Pumbedita, c. 300 BC</b>").openPopup();
     
     
     $("#AchEmpire").click(function () {

@@ -60,6 +60,10 @@
     var imageUrl = 'Achaemenid_Empire_(flat_map).svg';
     var imageOverlay = L.imageOverlay(imageUrl, imageBounds, { opacity: 0.4 });
 
+    var marker1 = L.marker([32.47527176162417, 44.42454213313517]).addTo(map1);
+marker.bindPopup("<b>Ancient Babylon, c. 500 BC</b>").openPopup();
+    
+    
     $("#AchEmpire").click(function () {
       if (map1.hasLayer(imageOverlay)) {
         map1.removeLayer(imageOverlay);
@@ -67,6 +71,9 @@
         imageOverlay.addTo(map1);
       }
     });
+
+  
+    
   </script>
 </body>
 </html>

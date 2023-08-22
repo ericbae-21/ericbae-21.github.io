@@ -60,7 +60,7 @@
     var imageOverlay = L.imageOverlay(imageUrl, imageBounds, { opacity: 0.4 });
     imageOverlay.addTo(map1);
 
-    var cityMarkers = L.featureGroup([marker1, marker2, marker3]).addTo(map1);
+    var cityMarkers = L.featureGroup([marker1, marker2, marker3, marker4]).addTo(map1);
     
     var marker1 = L.marker([32.47527176162417, 44.42454213313517]).addTo(map1);
     marker1.bindPopup("<b>Ancient Babylon,</b> <em>c. 5th-6th century BC</em>").openPopup();
@@ -68,7 +68,10 @@
     marker2.bindPopup("<b>Ancient Pumbedita,</b> <em>c. 4th century AD</em>").openPopup();
     var marker3 = L.marker([37.66438666269077, 62.17540713741571]).addTo(map1);
     marker3.bindPopup("<b>Merv (also Marv, Merve Oasis),</b> <em>c. 4th century AD</em>").openPopup();
+    var marker4 = L.marker([41.67524257451834, 60.75967224548145]).addTo(map1);
+    marker4.bindPopup("<b>Kath (capital of Khorezm, now <em>Beruni</em>),</b> <em>c. 6th century AD</em>").openPopup();
 
+    
     $("#AchEmpire").click(function () {
       if (map1.hasLayer(imageOverlay)) {
         map1.removeLayer(imageOverlay);

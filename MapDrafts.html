@@ -22,45 +22,39 @@
          margin-right: auto;
          ;}
   </style>
-
-  <script>
-     
-      var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
-                                          { maxZoom: 19, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href ="http://hot.osm.org">HOT OSM</a>'   
-                                          })
-      
-      function initialize() {
-          var map1 = L.map('map1', {
-              center: [32.474837307992985, 44.42437047175668 ],
-              zoom: 5, 
-            layers: [OpenStreetMap_HOT]
-        });
-
-        var imageBounds = [
-            [11.445393, 6.596245], // Southwest corner
-            [49.366841, 79.281791]  // Northeast corner
-        ];
-        
-        var imageUrl = 'Achaemenid_Empire_(flat_map).svg';
-        L.imageOverlay(imageUrl, imageBounds, { opacity:0.4}).addTo(map1);
-      }
-
-     $("#AchEmpire").click(function () {
-        if (imageURL) {
-          imageURLVisible = true; 
-          imageURL.removeFrom(map);
-        } else {
-          imageURLVisible = false;
-          imageURL.addTo(map);
-        }
-      });
-    </script>
   
 </head>
   
 <body onload="initialize()">
   <div id="map1"></div>
-   <div id="buttons">
+  <div id="buttons">
     <button id="AchEmpire">View/Hide Achaemenid Empire Borders, c. 500 BC</button>
+  </div>
+  <script>
+    var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+      { maxZoom: 19, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href ="http://hot.osm.org">HOT OSM</a>' });
+
+    var map1 = L.map('map1', {
+      center: [32.474837307992985, 44.42437047175668],
+      zoom: 5,
+      layers: [OpenStreetMap_HOT]
+    });
+
+    var imageBounds = [
+      [11.445393, 6.596245], // Southwest corner
+      [49.366841, 79.281791]  // Northeast corner
+    ];
+
+    var imageUrl = 'Achaemenid_Empire_(flat_map).svg';
+    var imageOverlay = L.imageOverlay(imageUrl, imageBounds, { opacity: 0.4 });
+
+    $("#AchEmpire").click(function () {
+      if (map1.hasLayer(imageOverlay)) {
+        map1.removeLayer(imageOverlay);
+      } else {
+        imageOverlay.addTo(map1);
+      }
+    });
+  </script>
 </body>
 </html>

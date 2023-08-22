@@ -5,7 +5,7 @@
   <title>Map Drafts</title>
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
   crossorigin=""/>
    <!-- Ok, this is the Leaflet JavaScript -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
@@ -36,26 +36,21 @@ integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
               center: [32.474837307992985, 44.42437047175668 ],
               zoom: 5, 
             layers: [OpenStreetMap_HOT]
-        })
-      }
+        });
 
-var imageBounds = [
-    [11.445393, 8.596245], // Southwest corner
-    [49.366841, 81.281791]  // Northeast corner
-  ];
-var imageUrl = 'Achaemenid_Empire_(flat_map).svg';
-    L.imageOverlay(imageUrl, imageBounds).addTo(map);
-    
+        var imageBounds = [
+            [11.445393, 8.596245], // Southwest corner
+            [49.366841, 81.281791]  // Northeast corner
+        ];
+        
+        var imageUrl = 'Achaemenid_Empire_(flat_map).svg';
+        L.imageOverlay(imageUrl, imageBounds).addTo(map1);
+      }
     </script>
   
 </head>
   
-<body onload ="initialize()">
+<body onload="initialize()">
   <div id="map1"></div>
 </body>
-
-
-
-
-
-  
+</html>

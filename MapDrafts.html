@@ -14,31 +14,8 @@
    <!-- the JQuery or JavaScript one-->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<style>
-  html, body { height: 100%; margin: 20px; padding-top: 5px;}
-  #map1 { height: 450px; width: 60%; 
-         padding: 25px;
-        margin-left: auto;
-         margin-right: auto;
-         ;}
-
-
-  #buttons {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 5px;
-  }
-  </style>
-  
-</head>
-  
-<body onload="initialize()">
-  <div id="map1"></div>
-  <div id="buttons">
-    <button id="AchEmpire">View/Hide Achaemenid Empire Borders, c. 500 BC</button>
-  </div>
   <script>
+ <script>
     var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
       { maxZoom: 19, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href ="http://hot.osm.org">HOT OSM</a>' });
 
@@ -64,5 +41,32 @@
       }
     });
   </script>
+    
+  </script>
+
+<style>
+  html, body { height: 100%; margin: 20px; padding-top: 5px;}
+  #map1 { height: 450px; width: 60%; 
+         padding: 25px;
+        margin-left: auto;
+         margin-right: auto;
+         ;}
+
+
+  #buttons {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+  }
+  </style>
+  
+</head>
+  
+<body onload="initialize()">
+  <div id="map1"></div>
+  <div id="buttons">
+    <button id="AchEmpire">View/Hide Achaemenid Empire Borders, c. 500 BC</button>
+  </div>
 </body>
 </html>

@@ -90,6 +90,7 @@ var imageUrl = 'Achaemenid_Empire_(flat_map).svg';
     L.imageOverlay(imageUrl, imageBounds).addTo(map1);
 
 var legend = L.control({ position: 'bottomleft' });
+    var legendControl = legend.addTo(map1);
 
 legend.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend');
@@ -99,7 +100,8 @@ legend.onAdd = function (map) {
         '<div><img src="scale line.png" alt="Scale Line" width="100" height="15"></div>'; // praying this works
     return div;
   ;}
-legend.addTo(map1);
+
+  var legendControl = legend.addTo(map1);
     
   </script>
   
